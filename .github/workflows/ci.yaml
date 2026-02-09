@@ -35,5 +35,5 @@ jobs:
      aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
   - name: Deploy to EKS 
     run: |
-     kubectl set image deployment/project4-deployment project4-app=${{ secrets.DOCKERHUB_USERNAME }}/project4-app:latest
+     kubectl set image deployment/project4-deployment project4-container=${{ secrets.DOCKERHUB_USERNAME }}/project4-app:latest
      kubectl rollout status deployment/project4-deployment

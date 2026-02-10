@@ -3,6 +3,6 @@ app = FastAPI()
 @app.get("/")
 def home():
 	return {"message": "CD pipeline Testing again"}
-@app.route("/health")
+@app.get("/health")
 def health():
-	return "ok", 200
+	return {"status": "ok"}

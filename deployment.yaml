@@ -1,20 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: 
  name: project4-deployment
+ labels: 
+  app: project4-app
 spec: 
  replicas: 2
  selector: 
   matchLabels: 
-   app: project4
- template:
+   app: project4-app
+ template: 
   metadata: 
    labels: 
-    app: project4
+    app: project4-app
   spec: 
    containers: 
-   - name: project4-container
+   - name: project4-app
      image: uzairchini/project4-app:latest
-     imagePullPolicy: Always
-     ports: 
+     ports:
      - containerPort: 8000
+     resources: 
+      requests: 
+       memory: "128Mi"
+       cpu: "100m"
+      limits: 
+       memory: "256Mi"
+       cpu: "250m"
+     startupProbe:
+      httpGet: 
+       path: /
+       port: 8000
+      failureThreshold: 30
+      periodSeconds: 5
+     readinessProbe: 
+      httpGet:
+       path: /
+       port: 8000
+      initialDelaySeconds: 5
+      periodSeconds: 10
+     livenessProbe:
+      httpGet: 
+       path: /
+       port: 8000
+      initialDelaySeconds: 15
+      periodSeconds: 20

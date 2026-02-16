@@ -99,8 +99,9 @@ kubectl apply -f deployment-prod.yaml
 ```
 Verify resources
  
-```kubectl get pods 
-   kubectl get svc
+```
+kubectl get pods 
+kubectl get svc
 ```
 Access application through LoadBalancer External IP
 

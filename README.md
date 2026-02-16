@@ -97,7 +97,8 @@ Apply production configuration
 
 kubectl apply -f deployment-prod.yaml
 ```
-Verify resources 
+Verify resources
+ 
 ```kubectl get pods 
    kubectl get svc
 ```
